@@ -2,12 +2,13 @@
 
 /** @jsx h */
 import { h } from "preact";
+import Layout from "../components/layouts.tsx";
 
 export default function AboutPage() {
   return (
-    <main>
+    <Layout>
       <h1>About</h1>
       <p>This is the about page.</p>
-    </main>
+    </Layout>
   );
 }
