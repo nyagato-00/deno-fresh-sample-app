@@ -1,15 +1,16 @@
 /** @jsx h */
 import { h } from "preact";
+import { tw } from "@twind";
 
-export default function layouts({children}:any) {
+export default function layouts({ children }: any) {
   return (
     <div>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/github/nyagato-00">nyagato-00</a>
+      <nav class={tw`w-full px-4 py-3 bg-black text-white mb-10`}>
+        <a class={tw`mx-4`} href="/">Home</a>
+        <a class={tw`mx-4`} href="/about">About</a>
+        <a class={tw`mx-4`} href="/search">Search Github Users</a>
       </nav>
       {children}
     </div>
-  )
+  );
 }
