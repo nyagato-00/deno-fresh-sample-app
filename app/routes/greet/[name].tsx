@@ -2,16 +2,31 @@
 
 /** @jsx h */
 import { h } from "preact";
-import { PageProps } from "$fresh/server.ts";
+import { PageProps, Handlers } from "$fresh/server.ts";
 import Layout from "../../components/layouts.tsx";
 
-export default function GreetPage(props: PageProps) {
-  const { name } = props.params;
+export const handler: Handlers = {
+  async GET(_, ctx) {
+    // fetch users fron db
+    const users = [
+      { name: "takashi"},
+      { name: "nyagato-00" }
+    ];
+    return  await ctx.render(users);
+  },
+
+} 
+
+export default function GreetPage({params, data}: PageProps) {
+  const { name } = params;
   return (
     <Layout>
       <main>
         <p>Greetings to you, {name}!</p>
       </main>
+      {
+        data.map((user:any) => <p>{user.name}</p>)
+      }
     </Layout>
   );
 }
