@@ -4,6 +4,7 @@
 import { h } from "preact";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Layout from "../../components/layouts.tsx";
+import { tw } from "@twind";
 
 interface User {
   login: string;
@@ -25,15 +26,18 @@ export const handler: Handlers<User | null> = {
 
 export default function Page({ data }: PageProps<User | null>) {
   if (!data) {
-    return <h1>User not found</h1>;
+    return <h1 class={tw`text-2xl text-center`}>User not found</h1>;
   }
 
   return (
     <Layout>
       <div>
-        <img src={data.avatar_url} width={64} height={64} />
+        <img
+          class={tw`border rounded shadow-md w-32 h-32`}
+          src={data.avatar_url}
+        />
         <h1>{data.name}</h1>
-        <p>{data.login}</p>
+        <p class={tw`text-2xl`}>{data.login}</p>
       </div>
     </Layout>
   );
